@@ -2,5 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #C0EADE;
+}
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
 }

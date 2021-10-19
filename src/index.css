@@ -20826,7 +20826,14 @@ video {
 .content-none {
   content: none;
 }
-
+@media screen and (max-width: 790px) {
+  .image{
+    display: none;
+  }
+  .box{
+    border-radius: 1rem;
+  }
+}
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -40883,6 +40890,7 @@ video {
   .md\:container {
     width: 100%;
   }
+  
 
   @media (min-width: 640px) {
     .md\:container {

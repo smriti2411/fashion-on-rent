@@ -1,12 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./index.css"
 import image from "./Image/a.PNG"
 import logo from "./Image/logo.PNG"
-import {FaUserCircle} from "@react-icons/all-files/fa/FaUserCircle"
+import validate from './valid';
 const Signup = () => {
-    return (
+  const [values, setValues] = useState({
+    name: '',
+    username: '',
+    email: '',
+    phone: '',
+    password: '',
+    password2: ''
+  });
+  const [errors, setErrors] = useState({});
+  
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    setErrors(validate(values));
+    
+  };
+
+
+
+  return (
         <>
-        <div className="min-h-screen flex items-center justify-center bg-red-bg box-border">
+  <div className="min-h-screen flex items-center justify-center bg-red-bg box-border overflow-hidden sm:min-h-screen">
         <div>
         <img src={image} alt="abc" className="max-h-full w-96 rounded-bl-2xl rounded-tl-2xl shadow-2xl" />
         </div>
@@ -31,7 +59,7 @@ const Signup = () => {
             <hr class="w-24 ml-auto border-gray-light" /> <span class="p-2 text-gray-440 text-xs">OR</span>
             <hr class="w-24 mr-auto border-gray-light" />
         </div>
-  <form className="h-auto" action="#" method="POST">
+  <form className="h-auto" onSubmit={handleSubmit} >
     
     <input type="hidden" name="remember" defaultValue="true" />
           <div>
@@ -46,9 +74,13 @@ const Signup = () => {
                         <input  id="name"
                         name="name"
                         type="text"
-                        autoComplete="name"
+                        autoComplete="off"
                         placeholder="Name*"
-                        class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
+                        value={values.name}
+            onChange={handleChange}
+                        class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" 
+                        required 
+                        />
                     </div>
                 </div>
             <div className="mt-6 space-y-4">
@@ -63,10 +95,12 @@ const Signup = () => {
                         <input id="Username*"
                 name="username"
                 type="text"
-                autoComplete="Username"
-              
+                autoComplete="off"
+                value={values.username}
+            onChange={handleChange}
                 placeholder="Username*"
                 class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
+               
                     </div>
                 </div>
             </div>
@@ -82,9 +116,12 @@ const Signup = () => {
                         <input id="email"
                 name="email"
                 type="email"
-                autoComplete="email"
+                autoComplete="off"
+                value={values.email}
+            onChange={handleChange}
               placeholder="Email (Optional)"
                 class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
+               
                     </div>
                 </div>
             </div>
@@ -100,7 +137,9 @@ const Signup = () => {
                         <input id="phone"
                 name="phone"
                 type="tel"
-                autoComplete="phone"
+                
+                value={values.phone}
+            onChange={handleChange}
                 pattern="[0-9]{10}"
               placeholder="Phone Number*"
                 class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
@@ -117,13 +156,16 @@ const Signup = () => {
                 Password
               </label>
                         <input id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-              
+               type='password'
+            name='password'
+            placeholder='Enter your password'
+            value={values.password}
+            onChange={handleChange}
                 placeholder="Password*"
                 class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
+                     
                     </div>
+                    
                 </div>
             </div>
             <div className="mt-6 space-y-4">
@@ -135,14 +177,17 @@ const Signup = () => {
                     <label htmlFor="password" className="sr-only">
                 Password
               </label>
-                        <input id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-              
+              <input id="password"
+               type='password'
+            name='password2'
+            placeholder='Confirm your password'
+            value={values.password2}
+            onChange={handleChange}
                 placeholder="Confirm Password*"
                 class="-mx-6 bg-red-lightest appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
+                   
                     </div>
+                    {errors.password2 && <alert className="text-xs text-gray-light ml-3 ">{errors.password2}</alert>}
                 </div>
             </div>
           </div> 

@@ -8,10 +8,10 @@ const Login = () => {
         <>
         <div className="min-h-screen flex items-center justify-center bg-blue-light box-border">
         <div>
-        <img src={image} alt="abc" className="max-h-full w-96 rounded-bl-2xl rounded-tl-2xl shadow-2xl m" />
+        <img src={image} alt="abc" className="image max-h-full w-96 rounded-bl-2xl rounded-tl-2xl shadow-2xl" />
         </div>
   
-  <div className="bg-white-light rounded-br-2xl rounded-tr-2xl w-96 shadow-2xl ">
+  <div className="bg-white-light rounded-br-2xl rounded-tr-2xl w-96 shadow-2xl box">
   <form className="h-auto" action="#" method="POST">
   <img className=" max-h-16 mx-auto mt-6 "
             src={logo}
@@ -32,7 +32,7 @@ const Login = () => {
                         name="email"
                         type="email"
                         autoComplete="email"
-                      
+                        required
                         placeholder="Username or Phone Number"
                             class="-mx-6 bg-blue-light appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
                     </div>
@@ -50,7 +50,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 autoComplete="current-password"
-              
+                required
                 placeholder="Password"
                 class="-mx-6 bg-blue-light appearance-none rounded-2xl relative block px-8 py-1.5 border border-none placeholder-gray-500 text-gray-light focus:outline-none focus:z-8 text-xs" />
                     </div>
@@ -77,7 +77,7 @@ const Login = () => {
             <hr class="w-24 ml-auto border-gray-light" /> <span class="p-2 text-gray-440 text-xs">OR</span>
             <hr class="w-24 mr-auto border-gray-light" />
         </div>
-        
+        </form> 
         <div class="w-3/5  mx-24 mt-5">
                   <div class="flex items-center">
                   <img src="https://s3-alpha-sig.figma.com/img/1ea2/e220/39c5118f1714336fda778b1d9ff4b439?Expires=1633910400&Signature=MKRx3VnqJ8E6xkna7Ok7pBBu4Yl2EV2VwhGVYLs1tw2UtA-15k91NwE9s~Pg9LBkjdVp2CRX7EyAw01wIdkGu6JnkYot6Kx7sPlEJjH0ERGdP-qkvoyW~AQiSUbcapwSJVc5PNluxTg0E5m~nle9r2GoMVujcbU83S0ldrclIS06xKl2sKOGA6vrmTFLd6HGwAtkmCFgqQivTyIZ2yp~-wJuMC2VidqeqPnOzDnTHtRDXEChB0OV20dH-G5z8AUJgd9ecl~6FY1rxnfY5uWS33AHWgAj5DBrxuVoTO5jz1GJRtFhv6Q9Yfu3stjWgo-dqSUKdJ6GJr4e-kvR6Y8vew__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -98,7 +98,7 @@ const Login = () => {
           </span>
           <button className="text-red-dark text-xs">Create a Account</button> 
           </div> 
-          </form>   
+            
   </div>
         </div>
         
